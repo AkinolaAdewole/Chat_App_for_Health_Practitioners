@@ -1,7 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {StreamChat} from 'stream-chat'
+import {Chat} from 'stream-chat-react'
+import Cookies from 'universal-cookie'
 
+
+const apiKey = 'gvmwucfu48vm'
 function App() {
   return (
     <div className="App">
