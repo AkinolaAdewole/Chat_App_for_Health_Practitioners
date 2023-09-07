@@ -7,7 +7,8 @@ import signinImage from '../assets/signup.jpg';
 const cookies = new Cookies();
 
 const initialState = {
-    fullName: '',
+    firstname: '',
+    lastname:'',
     username: '',
     password: '',
     confirmPassword: '',
@@ -65,19 +66,34 @@ const Auth = () => {
             <div className="auth__form-container_fields">
                 <div className="auth__form-container_fields-content">
                     <p>{isSignup ? 'Sign Up' : 'Sign In'}</p>
+
                     <form onSubmit={handleSubmit}>
-                        {isSignup && (
-                            <div className="auth__form-container_fields-content_input">
-                                <label htmlFor="fullName">Full Name</label>
-                                <input 
-                                    name="fullName" 
-                                    type="text"
-                                    placeholder="Full Name"
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                        )}
+                    {isSignup && (
+                                <div>
+                                    <div className="auth__form-container_fields-content_input">
+                                        <label htmlFor="fullName">First Name</label>
+                                        <input
+                                        name="firstname"
+                                        type="text"
+                                        placeholder="First Name"
+                                        onChange={handleChange}
+                                        required
+                                        />
+                                    </div>
+
+                                    <div className="auth__form-container_fields-content_input">
+                                        <label htmlFor="fullName">Last Name</label>
+                                        <input
+                                        name="lastname"
+                                        type="text"
+                                        placeholder="Last Name"
+                                        onChange={handleChange}
+                                        required
+                                        />
+                                    </div>
+                                </div>
+                            )}
+
                         <div className="auth__form-container_fields-content_input">
                             <label htmlFor="username">Username</label>
                                 <input 
