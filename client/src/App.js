@@ -6,11 +6,13 @@ import Cookies from 'universal-cookie'
 import {ChannelContainer, ChannelListContainer, Auth } from './components'
 import './App.css'
 
+// Create a new instance of the Cookies class to manage cookies in your application.
 const cookies = new Cookies();
 const apiKey = 'gvmwucfu48vm'
 const authToken = cookies.get("token");
 
-// create an instance of a streamchat
+// Create an instance of StreamChat using the provided apiKey. 
+// This instance of StreamChat will be used to interact with the Stream Chat API.
 const client = StreamChat.getInstance(apiKey);
 
 if(authToken) {

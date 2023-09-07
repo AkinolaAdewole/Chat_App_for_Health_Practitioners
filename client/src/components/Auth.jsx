@@ -23,6 +23,12 @@ const Auth = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
 
+
+     //  Define an asynchronous function handleSubmit which takes an event e as an argument. 
+        //This function is called when the form is submitted. It prevents the default form submission behavior.
+     // It extracts various properties (username, password, phoneNumber, avatarURL) from the form state.
+   // It sets the URL for the authentication endpoint. 
+   // It makes a POST request to the authentication endpoint using Axios, sending the relevant user information.
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -47,6 +53,8 @@ const Auth = () => {
 
         window.location.reload();
     }
+
+
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
