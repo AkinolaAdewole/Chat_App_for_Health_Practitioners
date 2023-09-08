@@ -5,7 +5,21 @@ const crypto = require('crypto');
 
 require('dotenv').config();
 
-const signup=()=>{}
-const login=()=>{}
+const signup=(req,res)=>{
+    try {
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: error });
+    }
+}
+const login=(req,res)=>{
+    try {
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: error });
+    }
+}
 
 module.exports = { signup, login }
