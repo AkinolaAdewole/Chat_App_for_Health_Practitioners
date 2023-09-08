@@ -49,6 +49,7 @@ const login= async(req,res)=>{
         } else {
             res.status(500).json({ message: 'Incorrect password' });
         }
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: error });

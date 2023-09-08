@@ -26,7 +26,7 @@ const Auth = () => {
 
 
      //  Define an asynchronous function handleSubmit which takes an event e as an argument. 
-        //This function is called when the form is submitted. It prevents the default form submission behavior.
+    //This function is called when the form is submitted. It prevents the default form submission behavior.
      // It extracts various properties (username, password, phoneNumber, avatarURL) from the form state.
    // It sets the URL for the authentication endpoint. 
    // It makes a POST request to the authentication endpoint using Axios, sending the relevant user information.
@@ -35,15 +35,16 @@ const Auth = () => {
 
         const { username, password, phoneNumber, avatarURL } = form;
 
-        const URL = 'https://localhost:5000/auth';
+        const URL = 'https://localhost:3500/auth';
 
-        const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
-            username, password, fullName: form.fullName, phoneNumber, avatarURL,
+        const { data: { token, userId, hashedPassword, firstname, lastname } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+            username, password, firstname: form.firstname, lastname:form.lastname, phoneNumber, avatarURL,
         });
 
         cookies.set('token', token);
         cookies.set('username', username);
-        cookies.set('fullName', fullName);
+        cookies.set('firstname', firstname);
+        cookies.set('lastname', lastname);
         cookies.set('userId', userId);
 
         if(isSignup) {

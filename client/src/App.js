@@ -19,7 +19,8 @@ if(authToken) {
   client.connectUser({
       id: cookies.get('userId'),
       name: cookies.get('username'),
-      fullName: cookies.get('fullName'),
+      firstname: cookies.get('firstname'),
+      lastname: cookies.get('lastname'),
       image: cookies.get('avatarURL'),
       hashedPassword: cookies.get('hashedPassword'),
       phoneNumber: cookies.get('phoneNumber'),
