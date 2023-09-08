@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageTeam, useMessageContext } from 'stream-chat-react';
+import { MessageActions, useMessageContext } from 'stream-chat-react';
 
 const TeamMessage = () => {
     const { message } = useMessageContext();
@@ -10,7 +10,7 @@ const TeamMessage = () => {
     };
 
     return (
-        <MessageTeam
+        <MessageActions
             message={{ ...message, user: {} }}
             handleOpenThread={handleOpenThread} // Pass the handleOpenThread function here
         />
