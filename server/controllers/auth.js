@@ -9,9 +9,9 @@ const api_key = process.env.STREAM_API_KEY;
 const api_secret = process.env.STREAM_API_SECRET;
 const app_id = process.env.STREAM_APP_ID;
 
-const signup= async(req,res)=>{
+const signup = async (req, res) => {
     try {
-        const { firstname, lastname, username, password, phoneNumber } = req.body;
+        const { fullName, username, password, phoneNumber } = req.body;
 
         const userId = crypto.randomBytes(16).toString('hex');
 
@@ -21,15 +21,15 @@ const signup= async(req,res)=>{
 
         const token = serverClient.createUserToken(userId);
 
-        res.status(200).json({ token, firstname, lastname, username, userId, hashedPassword, phoneNumber });
+        res.status(200).json({ token, fullName, username, userId, hashedPassword, phoneNumber });
     } catch (error) {
-        console.error(error);
+        console.log(error);
+
         res.status(500).json({ message: error });
     }
-}
+};
 
-
-const login= async(req,res)=>{
+const login = async (req, res) => {
     try {
         const { username, password } = req.body;
         
@@ -45,15 +45,15 @@ const login= async(req,res)=>{
         const token = serverClient.createUserToken(users[0].id);
 
         if(success) {
-            res.status(200).json({ token, firstname: users[0].firstname, lastname:users[0].lastname, username, userId: users[0].id});
+            res.status(200).json({ token, fullName: users[0].fullName, username, userId: users[0].id});
         } else {
             res.status(500).json({ message: 'Incorrect password' });
         }
-        
-    } catch (error) {
-        console.error(error);
+    } catch (error) {ads
+        console.log(error);
+
         res.status(500).json({ message: error });
     }
-}
+};
 
 module.exports = { signup, login }

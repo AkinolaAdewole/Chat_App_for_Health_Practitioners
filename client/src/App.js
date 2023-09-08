@@ -1,42 +1,40 @@
-import React,{useState} from 'react';
-import {StreamChat} from 'stream-chat'
-import {Chat} from 'stream-chat-react'
-import Cookies from 'universal-cookie'
+import React, { useState } from 'react';
+import { StreamChat } from 'stream-chat';
+import { Chat } from 'stream-chat-react';
+import Cookies from 'universal-cookie';
 
-import {ChannelContainer, ChannelListContainer, Auth } from './components'
-import './App.css'
+import { ChannelListContainer, ChannelContainer, Auth } from './components';
 
-// Create a new instance of the Cookies class to manage cookies in your application.
+import 'stream-chat-react/dist/css/index.css';
+import './App.css';
+
 const cookies = new Cookies();
-const apiKey = 'gvmwucfu48vm'
+
+const apiKey = 'gvmwucfu48vm';
 const authToken = cookies.get("token");
 
-// Create an instance of StreamChat using the provided apiKey. 
-// This instance of StreamChat will be used to interact with the Stream Chat API.
 const client = StreamChat.getInstance(apiKey);
 
 if(authToken) {
-  client.connectUser({
-      id: cookies.get('userId'),
-      name: cookies.get('username'),
-      firstname: cookies.get('firstname'),
-      lastname: cookies.get('lastname'),
-      image: cookies.get('avatarURL'),
-      hashedPassword: cookies.get('hashedPassword'),
-      phoneNumber: cookies.get('phoneNumber'),
-  }, authToken)
+    client.connectUser({
+        id: cookies.get('userId'),
+        name: cookies.get('username'),
+        fullName: cookies.get('fullName'),
+        image: cookies.get('avatarURL'),
+        hashedPassword: cookies.get('hashedPassword'),
+        phoneNumber: cookies.get('phoneNumber'),
+    }, authToken)
 }
 
-function App() {
 
-  const [createType, setCreateType] = useState('');
+const App = () => {
+    const [createType, setCreateType] = useState('');
     const [isCreating, setIsCreating] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
 
     if(!authToken) return <Auth />
 
-  return (
-    <div>
+    return (
         <div className="app__wrapper">
             <Chat client={client} theme="team light">
                 <ChannelListContainer 
@@ -54,8 +52,7 @@ function App() {
                 />
             </Chat>
         </div>
-    </div>
-  );
+    );
 }
 
 export default App;

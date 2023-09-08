@@ -7,15 +7,14 @@ import signinImage from '../assets/signup.jpg';
 const cookies = new Cookies();
 
 const initialState = {
-    firstname: '',
-    lastname:'',
+    fullName: '',
     username: '',
     password: '',
     confirmPassword: '',
     phoneNumber: '',
     avatarURL: '',
 }
- 
+
 const Auth = () => {
     const [form, setForm] = useState(initialState);
     const [isSignup, setIsSignup] = useState(true);
@@ -24,27 +23,21 @@ const Auth = () => {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
 
-
-     //  Define an asynchronous function handleSubmit which takes an event e as an argument. 
-    //This function is called when the form is submitted. It prevents the default form submission behavior.
-     // It extracts various properties (username, password, phoneNumber, avatarURL) from the form state.
-   // It sets the URL for the authentication endpoint. 
-   // It makes a POST request to the authentication endpoint using Axios, sending the relevant user information.
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const { username, password, phoneNumber, avatarURL } = form;
 
         const URL = 'https://localhost:3500/auth';
+        // const URL = 'https://medical-pager.herokuapp.com/auth';
 
-        const { data: { token, userId, hashedPassword, firstname, lastname } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
-            username, password, firstname: form.firstname, lastname:form.lastname, phoneNumber, avatarURL,
+        const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+            username, password, fullName: form.fullName, phoneNumber, avatarURL,
         });
 
         cookies.set('token', token);
         cookies.set('username', username);
-        cookies.set('firstname', firstname);
-        cookies.set('lastname', lastname);
+        cookies.set('fullName', fullName);
         cookies.set('userId', userId);
 
         if(isSignup) {
@@ -56,8 +49,6 @@ const Auth = () => {
         window.location.reload();
     }
 
-
-
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
     }
@@ -67,34 +58,19 @@ const Auth = () => {
             <div className="auth__form-container_fields">
                 <div className="auth__form-container_fields-content">
                     <p>{isSignup ? 'Sign Up' : 'Sign In'}</p>
-
                     <form onSubmit={handleSubmit}>
-                    {isSignup && (
-                                <div>
-                                    <div className="auth__form-container_fields-content_input">
-                                        <label htmlFor="fullName">First Name</label>
-                                        <input
-                                        name="firstname"
-                                        type="text"
-                                        placeholder="First Name"
-                                        onChange={handleChange}
-                                        required
-                                        />
-                                    </div>
-
-                                    <div className="auth__form-container_fields-content_input">
-                                        <label htmlFor="fullName">Last Name</label>
-                                        <input
-                                        name="lastname"
-                                        type="text"
-                                        placeholder="Last Name"
-                                        onChange={handleChange}
-                                        required
-                                        />
-                                    </div>
-                                </div>
-                            )}
-
+                        {isSignup && (
+                            <div className="auth__form-container_fields-content_input">
+                                <label htmlFor="fullName">Full Name</label>
+                                <input 
+                                    name="fullName" 
+                                    type="text"
+                                    placeholder="Full Name"
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                        )}
                         <div className="auth__form-container_fields-content_input">
                             <label htmlFor="username">Username</label>
                                 <input 
