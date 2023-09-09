@@ -1,20 +1,15 @@
 import React from 'react';
-import { MessageActions, useMessageContext } from 'stream-chat-react';
+import { MessageTeam, useMessageContext } from 'stream-chat-react';
 
 const TeamMessage = () => {
-    const { message } = useMessageContext();
-
-    // If you want to open a thread when clicking the message, you can use handleOpenThread
-    const handleOpenThread = () => {
-        // Implement your logic here to open the thread
-    };
+    const { handleOpenThread, message } = useMessageContext();
 
     return (
-        <MessageActions
-            message={{ ...message, user: {} }}
-            handleOpenThread={handleOpenThread} // Pass the handleOpenThread function here
+        <MessageTeam
+            message={{ ...message, user: {}}}
+            // handleOpenThread={}
         />
-    );
-};
+    )
+}
 
-export default TeamMessage;
+export default TeamMessage
