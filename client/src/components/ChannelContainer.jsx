@@ -4,7 +4,7 @@ import { Channel, MessageTeam } from 'stream-chat-react'; // Importing component
 import { ChannelInner, CreateChannel, EditChannel } from './'; // Importing custom components
 
 const ChannelContainer = ({ isCreating, setIsCreating, isEditing, setIsEditing, createType }) => {
-    // If the channel is being created, render the CreateChannel component
+    // !If the channel is being created, render the CreateChannel component
     if (isCreating) {
         return (
             <div className="channel__container">
