@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
     res.send('Hello, World!');
 });
 
+app.get('/auth', (req, res) => {
+    res.send('Hello, World!');
+});
+
 app.post('/', (req, res) => {
     const { message, user: sender, type, members } = req.body;
 
