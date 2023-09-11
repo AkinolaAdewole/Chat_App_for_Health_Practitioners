@@ -1,7 +1,7 @@
 import React from 'react';
-import { Channel, MessageTeam } from 'stream-chat-react';
+import { Channel, MessageTeam } from 'stream-chat-react'; // Importing components from 'stream-chat-react'
 
-import { ChannelInner, CreateChannel, EditChannel } from './';
+import { ChannelInner, CreateChannel, EditChannel } from './'; // Importing custom components
 
 const ChannelContainer = ({ isCreating, setIsCreating, isEditing, setIsEditing, createType }) => {
     // If the channel is being created, render the CreateChannel component
@@ -32,12 +32,12 @@ const ChannelContainer = ({ isCreating, setIsCreating, isEditing, setIsEditing, 
 
     // If neither creating nor editing, render the Channel component with its inner content
     return (
-        <div className=" channel__container">
+        <div className="channel__container">
             <Channel
                 EmptyStateIndicator={EmptyState} // Set the EmptyState component as the indicator for an empty channel
                 Message={(messageProps, i) => <MessageTeam key={i} {...messageProps} />} // Render MessageTeam component for messages
             >
-                <ChannelInner setIsEditing={setIsEditing} /> // Render ChannelInner component
+                <ChannelInner setIsEditing={setIsEditing} /> {/* Render ChannelInner component */}
             </Channel>
         </div>
     );
