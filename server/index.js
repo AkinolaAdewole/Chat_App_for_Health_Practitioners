@@ -5,7 +5,6 @@ const authRoutes = require("./routes/auth.js");
 
 const app = express();
 
-
 require('dotenv').config();
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
