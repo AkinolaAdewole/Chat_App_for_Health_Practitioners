@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines":{
+  "engines": {
     "node": "18.x"
   },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "vercel-buid":"echo hello"
+    "vercel-buid": "echo hello"
   },
   "author": "",
   "license": "ISC",
